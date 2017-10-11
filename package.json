@@ -35,6 +35,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "syllable": "^2.2.0"
+    "syllable": "^2.2.0",
+    "werd": "^0.2.7"
   }
 }
