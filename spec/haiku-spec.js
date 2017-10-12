@@ -34,8 +34,11 @@ describe('haiku', function() {
     expect(reusableBadHaiku.haikuChecker()).toEqual(false);
   });
 
-  it('should return true for actual good haiku', function() {
-    expect(randomHaiku.generateHaiku()).toEqual(true);
+  it('should return the right syllable count for actual good haiku', function() {
+    randomHaiku.generateHaiku()
+    expect(syllable(randomHaiku.line1)).toEqual(5);
+    expect(syllable(randomHaiku.line2)).toEqual(7);
+    expect(syllable(randomHaiku.line3)).toEqual(5);
   });
 
 });

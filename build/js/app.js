@@ -52,36 +52,36 @@ RandomHaiku.prototype.generateHaiku = function () {
   var x = Math.floor(Math.random() * 4) + 1;
 
   var randNum = function randNum() {
-    return Math.floor(Math.random() * 11);
+    return Math.floor(Math.random() * 10);
   };
 
   if (x == 1) {
     this.line1 = verbs2[randNum()] + ' ' + nouns3[randNum()];
-    this.line2 = adVerbs4[randNum()] + ' ' + verbs1[randNum()] + nouns2[randNum()];
+    this.line2 = adVerbs4[randNum()] + ' ' + verbs1[randNum()] + ' ' + nouns2[randNum()];
     this.line3 = adVerbs4[randNum()] + ' ' + nouns1[randNum()];
-    console.log(x);
-    debugger;
+    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
+    alert(x);
   }
   if (x == 2) {
     this.line1 = adVerbs2[randNum()] + ' ' + verbs2[randNum()] + ' ' + nouns1[randNum()];
-    this.line2 = verbs4[randNum] + ' ' + nouns3[randNum()];
+    this.line2 = verbs4[randNum()] + ' ' + nouns3[randNum()];
     this.line3 = verbs1[randNum()] + ' ' + nouns4[randNum()];
-    console.log(x);
-    debugger;
+    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
+    alert(x);
   }
   if (x == 3) {
     this.line1 = adVerbs2[randNum()] + ' ' + verbs1[randNum()] + ' ' + nouns2[randNum()];
     this.line2 = adVerbs3[randNum()] + ' ' + nouns4[randNum()];
     this.line3 = verbs3[randNum()] + ' ' + adVerbs1[randNum()] + ' ' + nouns1[randNum()];
-    console.log(x);
-    debugger;
+    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
+    alert(x);
   }
   if (x == 4) {
     this.line1 = verbs4[randNum()] + ' ' + nouns1[randNum()];
     this.line2 = adVerbs1[randNum()] + ' ' + verbs3[randNum()] + ' ' + nouns3[randNum()];
     this.line3 = adVerbs1[randNum()] + ' ' + nouns4[randNum()];
-    console.log(x);
-    debugger;
+    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
+    alert(x);
   }
 };
 
