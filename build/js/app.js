@@ -1,91 +1,112 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var syllable = require('syllable');
 
-function Haiku() {
-  this.line1 = '';
-  this.line2 = '';
-  this.line3 = '';
-}
+var Haiku = exports.Haiku = function () {
+  function Haiku(line1, line2, line3) {
+    _classCallCheck(this, Haiku);
 
-Haiku.prototype.haikuChecker = function () {
-  var cleaned1 = this.line1.replace(/[^a-z ]/gi, '');
-  var cleaned2 = this.line2.replace(/[^a-z ]/gi, '');
-  var cleaned3 = this.line3.replace(/[^a-z ]/gi, '');
-  if (syllable(cleaned1.replace(/[ ]/g, '-')) == 5 && syllable(cleaned2.replace(/[ ]/g, '-')) == 7 && syllable(cleaned3.replace(/[ ]/g, '-')) == 5) {
-    return true;
-  } else {
-    return false;
+    this.line1 = line1;
+    this.line2 = line2;
+    this.line3 = line3;
   }
-};
 
-exports.haikuModule = Haiku;
+  _createClass(Haiku, [{
+    key: 'haikuChecker',
+    value: function haikuChecker() {
+      var cleaned1 = this.line1.replace(/[^a-z ]/gi, '');
+      var cleaned2 = this.line2.replace(/[^a-z ]/gi, '');
+      var cleaned3 = this.line3.replace(/[^a-z ]/gi, '');
+      if (syllable(cleaned1.replace(/[ ]/g, '-')) == 5 && syllable(cleaned2.replace(/[ ]/g, '-')) == 7 && syllable(cleaned3.replace(/[ ]/g, '-')) == 5) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }]);
+
+  return Haiku;
+}();
 
 },{"syllable":6}],2:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var syllable = require('syllable');
 
-var RandomHaiku = function RandomHaiku() {
-  this.line1 = '';
-  this.line2 = '';
-  this.line3 = '';
-};
+var RandomHaiku = exports.RandomHaiku = function () {
+  function RandomHaiku() {
+    _classCallCheck(this, RandomHaiku);
 
-var nouns1 = ['ball', 'sword', 'stick', 'pit', 'board', 'pipe', 'pube', 'fart', 'fire', 'mouth'];
-var nouns2 = ['zephyr', 'echo', 'winner', 'stoner', 'saphire', 'kumquat', 'eon', 'gibon', 'zebra', 'turkey'];
-var nouns3 = ['architect', 'archbishop', 'corridor', 'syphilis', 'bonobo', 'detective', 'disorder', 'dinosaur', 'dracula', 'hamburger'];
-var nouns4 = ['diarrhea', 'competitor', 'delegation', 'executive', 'vegetable', 'practicioner', 'radiation', 'politician', 'sanctuary', 'oregano'];
-
-var adVerbs1 = ['plump', 'least', 'quite', 'stark', 'clean', 'deep', 'bright', 'wide', 'rough', 'warm'];
-var adVerbs2 = ['little', 'lonely', 'super', 'heavy', 'double', 'quiet', 'extra', 'surely', 'hourly', 'forthwith'];
-var adVerbs3 = ['orally', 'forever', 'powerful', 'angrily', 'nevermore', 'tidily', 'haphazard', 'akimbo', 'asunder', 'eagerly'];
-var adVerbs4 = ['anticlockwise', 'defenseless', 'effortlessly', 'casually', 'queasily', 'disregarding', 'piteously', 'forcefully', 'amorously', 'salaciously'];
-
-var verbs1 = ['snitch', 'tip', 'green', 'out', 'duck', 'film', 'rain', 'paint', 'fly', 'bomb'];
-var verbs2 = ['dirty', 'revenge', 'purple', 'open', 'party', 'private', 'silent', 'abase', 'hustle', 'tickle'];
-var verbs3 = ['abolish', 'maneuver', 'discipline', 'understand', 'compliment', 'consumate', 'suffocate', 'advertise', 'hydroplane', 'bespatter'];
-var verbs4 = ['absquatulate', 'prognosticate', 'emasculate', 'decapitate', 'elucidate', 'expectorate', 'capitulate', 'militarize', 'aromatise', 'luxuriate'];
-
-RandomHaiku.prototype.generateHaiku = function () {
-  var x = Math.floor(Math.random() * 4) + 1;
-
-  var randNum = function randNum() {
-    return Math.floor(Math.random() * 10);
-  };
-
-  if (x == 1) {
-    this.line1 = verbs2[randNum()] + ' ' + nouns3[randNum()];
-    this.line2 = adVerbs4[randNum()] + ' ' + verbs1[randNum()] + ' ' + nouns2[randNum()];
-    this.line3 = adVerbs4[randNum()] + ' ' + nouns1[randNum()];
-    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
-    alert(x);
+    this.line1 = '';
+    this.line2 = '';
+    this.line3 = '';
   }
-  if (x == 2) {
-    this.line1 = adVerbs2[randNum()] + ' ' + verbs2[randNum()] + ' ' + nouns1[randNum()];
-    this.line2 = verbs4[randNum()] + ' ' + nouns3[randNum()];
-    this.line3 = verbs1[randNum()] + ' ' + nouns4[randNum()];
-    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
-    alert(x);
-  }
-  if (x == 3) {
-    this.line1 = adVerbs2[randNum()] + ' ' + verbs1[randNum()] + ' ' + nouns2[randNum()];
-    this.line2 = adVerbs3[randNum()] + ' ' + nouns4[randNum()];
-    this.line3 = verbs3[randNum()] + ' ' + adVerbs1[randNum()] + ' ' + nouns1[randNum()];
-    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
-    alert(x);
-  }
-  if (x == 4) {
-    this.line1 = verbs4[randNum()] + ' ' + nouns1[randNum()];
-    this.line2 = adVerbs1[randNum()] + ' ' + verbs3[randNum()] + ' ' + nouns3[randNum()];
-    this.line3 = adVerbs1[randNum()] + ' ' + nouns4[randNum()];
-    alert(this.line1 + ' / ' + this.line2 + ' / ' + this.line3);
-    alert(x);
-  }
-};
 
-exports.randomHaikuModule = RandomHaiku;
+  _createClass(RandomHaiku, [{
+    key: 'generateHaiku',
+    value: function generateHaiku() {
+      var nouns1 = ['ball', 'sword', 'stick', 'pit', 'board', 'pipe', 'pube', 'fart', 'fire', 'mouth', 'sock', 'knee', 'toy', 'bike', 'car', 'train', 'husk', 'shirt', 'skirt', 'pants'];
+      var nouns2 = ['zephyr', 'echo', 'winner', 'stoner', 'saphire', 'kumquat', 'tuba', 'gibon', 'zebra', 'turkey', 'lone pipe', 'surfboard', 'wagon', 'all food', 'bathroom', 'short desk', 'wet fir', 'tissues', 'bottle', 'hammock'];
+      var nouns3 = ['architect', 'archbishop', 'corridor', 'syphilis', 'bonobo', 'detective', 'disorder', 'dinosaur', 'dracula', 'hamburger', 'limp sausage', 'scary book', 'plastic leaf', 'emoji', 'poo tuba', 'tame aardvark', 'slow cheetah', 'small blowhard', 'long inchworm', 'decent snail'];
+      var nouns4 = ['diarrhea', 'competitor', 'delegation', 'executive', 'vegetable', 'practitioner', 'radiation', 'politician', 'sanctuary', 'oregano', 'hairy saphire', 'silly kumquat', 'oblong tuba', 'plain syphilis', 'small dracula', 'bad gorilla', 'cavernous hut', 'mysterious tent', 'aligator', 'bad banana'];
+
+      var beforeNoun1 = ['plump', 'wet', 'red', 'stark', 'clean', 'deep', 'bright', 'wide', 'rough', 'warm', 'cold', 'clear', 'tight', 'loose', 'hot', 'cool', 'thick', 'mean', 'rude', 'nice'];
+      var beforeNoun2 = ['little', 'lonely', 'super', 'heavy', 'double', 'quiet', 'morose', 'obtuse', 'concave', 'acute', 'a plump', 'the wet', 'my red', 'her stark', 'his clean', 'a deep', 'our bright', 'my wide', 'your rough', 'the warm'];
+      var beforeNoun3 = ['literal', 'chocolate', 'important', 'dangerous', 'masculine', 'feminine', 'amazing', 'musical', 'withering', 'personal', 'the little', 'her lonely', 'his super', 'a heavy', 'the double', 'a quiet', 'your morose', 'an obtuse', 'my concave', 'their acute'];
+      var beforeNoun4 = ['meticulous', 'independent', 'rambunctious', 'invincible', 'expressionless', 'spectacular', 'emotionless', 'cantankerous', 'aggravated', 'assailable', 'the literal', 'a chocolate', 'an important', 'our dangerous', 'your masculine', 'my feminine', 'an amazing', 'her musical', 'a withering', 'his personal'];
+
+      var afterNoun1 = ['sings', 'laughs', 'golfs', 'smiles', 'coughs', 'falls', 'sins', 'paints', 'tweets', 'bombs', 'hails', 'farts', 'snoots', 'boops', 'bops', 'flees', 'flies', 'jumps', 'skips', 'dives'];
+      var afterNoun2 = ['waffles', 'shivers', 'worries', 'binges', 'parties', 'abides', 'rockets', 'reasons', 'hustles', 'tickles', 'sings well', 'laughs dumb', 'won\'t golf', 'smiles mean', 'coughs loud', 'falls hard', 'sins much', 'paints fish', 'retweets', 'cheese bombs'];
+      var afterNoun3 = ['captivates', 'conoodles', 'salivates', 'flagellates', 'misconstrues', 'bifurcates', 'pollinates', 'barricades', 'masquerades', 'catapults', 'waffles fast', 'shivers brrrrr', 'has worries', 'binges hard', 'parties soft', 'won\'t abide', 'shoots rockets', 'gives reasons', 'hustles teeth', 'hates tickles'];
+      var afterNoun4 = ['irradiates', 'quadruplicates', 'gesticulates', 'remunerates', 'disembodies', 'decertifies', 'overcharges', 'exemplifies', 'misestimates', 'reconnoitres', 'captivates worms', 'conoodles geese', 'salivates also', 'flagellates sand', 'misconstrues facts', 'bifurcates meat', 'pollinates butts', 'barricades souls', 'tickles monkeys', 'catapults hearts'];
+
+      var x = Math.floor(Math.random() * 4) + 1;
+
+      function randNum() {
+        return Math.floor(Math.random() * 20);
+      }
+      if (x == 1) {
+        this.line1 = beforeNoun2[randNum()] + ' ' + nouns3[randNum()];
+        this.line2 = beforeNoun1[randNum()] + ' ' + nouns2[randNum()] + ' ' + afterNoun4[randNum()];
+        this.line3 = beforeNoun4[randNum()] + ' ' + nouns1[randNum()];
+      }
+      if (x == 2) {
+        this.line1 = beforeNoun2[randNum()] + ' ' + nouns1[randNum()] + ' ' + afterNoun2[randNum()];
+        this.line2 = beforeNoun4[randNum()] + ' ' + nouns3[randNum()];
+        this.line3 = beforeNoun1[randNum()] + ' ' + nouns4[randNum()];
+      }
+      if (x == 3) {
+        this.line1 = beforeNoun1[randNum()] + ' ' + nouns2[randNum()] + ' ' + afterNoun2[randNum()];
+        this.line2 = nouns4[randNum()] + ' ' + afterNoun3[randNum()];
+        this.line3 = beforeNoun3[randNum()] + ' ' + nouns1[randNum()] + ' ' + afterNoun1[randNum()];
+      }
+      if (x == 4) {
+        this.line1 = beforeNoun4[randNum()] + ' ' + nouns1[randNum()];
+        this.line2 = beforeNoun3[randNum()] + ' ' + nouns3[randNum()] + ' ' + afterNoun1[randNum()];
+        this.line3 = beforeNoun1[randNum()] + ' ' + nouns4[randNum()];
+      }
+    }
+  }]);
+
+  return RandomHaiku;
+}();
 
 },{"syllable":6}],3:[function(require,module,exports){
 module.exports={"105":"i","192":"A","193":"A","194":"A","195":"A","196":"A","197":"A","199":"C","200":"E","201":"E","202":"E","203":"E","204":"I","205":"I","206":"I","207":"I","209":"N","210":"O","211":"O","212":"O","213":"O","214":"O","216":"O","217":"U","218":"U","219":"U","220":"U","221":"Y","224":"a","225":"a","226":"a","227":"a","228":"a","229":"a","231":"c","232":"e","233":"e","234":"e","235":"e","236":"i","237":"i","238":"i","239":"i","241":"n","242":"o","243":"o","244":"o","245":"o","246":"o","248":"o","249":"u","250":"u","251":"u","252":"u","253":"y","255":"y","256":"A","257":"a","258":"A","259":"a","260":"A","261":"a","262":"C","263":"c","264":"C","265":"c","266":"C","267":"c","268":"C","269":"c","270":"D","271":"d","272":"D","273":"d","274":"E","275":"e","276":"E","277":"e","278":"E","279":"e","280":"E","281":"e","282":"E","283":"e","284":"G","285":"g","286":"G","287":"g","288":"G","289":"g","290":"G","291":"g","292":"H","293":"h","294":"H","295":"h","296":"I","297":"i","298":"I","299":"i","300":"I","301":"i","302":"I","303":"i","304":"I","308":"J","309":"j","310":"K","311":"k","313":"L","314":"l","315":"L","316":"l","317":"L","318":"l","319":"L","320":"l","321":"L","322":"l","323":"N","324":"n","325":"N","326":"n","327":"N","328":"n","332":"O","333":"o","334":"O","335":"o","336":"O","337":"o","338":"O","339":"o","340":"R","341":"r","342":"R","343":"r","344":"R","345":"r","346":"S","347":"s","348":"S","349":"s","350":"S","351":"s","352":"S","353":"s","354":"T","355":"t","356":"T","357":"t","358":"T","359":"t","360":"U","361":"u","362":"U","363":"u","364":"U","365":"u","366":"U","367":"u","368":"U","369":"u","370":"U","371":"u","372":"W","373":"w","374":"Y","375":"y","376":"Y","377":"Z","378":"z","379":"Z","380":"z","381":"Z","382":"z","384":"b","385":"B","386":"B","387":"b","390":"O","391":"C","392":"c","393":"D","394":"D","395":"D","396":"d","398":"E","400":"E","401":"F","402":"f","403":"G","407":"I","408":"K","409":"k","410":"l","412":"M","413":"N","414":"n","415":"O","416":"O","417":"o","420":"P","421":"p","422":"R","427":"t","428":"T","429":"t","430":"T","431":"U","432":"u","434":"V","435":"Y","436":"y","437":"Z","438":"z","461":"A","462":"a","463":"I","464":"i","465":"O","466":"o","467":"U","468":"u","477":"e","484":"G","485":"g","486":"G","487":"g","488":"K","489":"k","490":"O","491":"o","500":"G","501":"g","504":"N","505":"n","512":"A","513":"a","514":"A","515":"a","516":"E","517":"e","518":"E","519":"e","520":"I","521":"i","522":"I","523":"i","524":"O","525":"o","526":"O","527":"o","528":"R","529":"r","530":"R","531":"r","532":"U","533":"u","534":"U","535":"u","536":"S","537":"s","538":"T","539":"t","542":"H","543":"h","544":"N","545":"d","548":"Z","549":"z","550":"A","551":"a","552":"E","553":"e","558":"O","559":"o","562":"Y","563":"y","564":"l","565":"n","566":"t","567":"j","570":"A","571":"C","572":"c","573":"L","574":"T","575":"s","576":"z","579":"B","580":"U","581":"V","582":"E","583":"e","584":"J","585":"j","586":"Q","587":"q","588":"R","589":"r","590":"Y","591":"y","592":"a","593":"a","595":"b","596":"o","597":"c","598":"d","599":"d","600":"e","603":"e","604":"e","605":"e","606":"e","607":"j","608":"g","609":"g","610":"g","613":"h","614":"h","616":"i","618":"i","619":"l","620":"l","621":"l","623":"m","624":"m","625":"m","626":"n","627":"n","628":"n","629":"o","633":"r","634":"r","635":"r","636":"r","637":"r","638":"r","639":"r","640":"r","641":"r","642":"s","647":"t","648":"t","649":"u","651":"v","652":"v","653":"w","654":"y","655":"y","656":"z","657":"z","663":"c","665":"b","666":"e","667":"g","668":"h","669":"j","670":"k","671":"l","672":"q","686":"h","688":"h","690":"j","691":"r","692":"r","694":"r","695":"w","696":"y","737":"l","738":"s","739":"x","780":"v","829":"x","851":"x","867":"a","868":"e","869":"i","870":"o","871":"u","872":"c","873":"d","874":"h","875":"m","876":"r","877":"t","878":"v","879":"x","7424":"a","7427":"b","7428":"c","7429":"d","7431":"e","7432":"e","7433":"i","7434":"j","7435":"k","7436":"l","7437":"m","7438":"n","7439":"o","7440":"o","7441":"o","7442":"o","7443":"o","7446":"o","7447":"o","7448":"p","7449":"r","7450":"r","7451":"t","7452":"u","7453":"u","7454":"u","7455":"m","7456":"v","7457":"w","7458":"z","7522":"i","7523":"r","7524":"u","7525":"v","7680":"A","7681":"a","7682":"B","7683":"b","7684":"B","7685":"b","7686":"B","7687":"b","7690":"D","7691":"d","7692":"D","7693":"d","7694":"D","7695":"d","7696":"D","7697":"d","7698":"D","7699":"d","7704":"E","7705":"e","7706":"E","7707":"e","7710":"F","7711":"f","7712":"G","7713":"g","7714":"H","7715":"h","7716":"H","7717":"h","7718":"H","7719":"h","7720":"H","7721":"h","7722":"H","7723":"h","7724":"I","7725":"i","7728":"K","7729":"k","7730":"K","7731":"k","7732":"K","7733":"k","7734":"L","7735":"l","7738":"L","7739":"l","7740":"L","7741":"l","7742":"M","7743":"m","7744":"M","7745":"m","7746":"M","7747":"m","7748":"N","7749":"n","7750":"N","7751":"n","7752":"N","7753":"n","7754":"N","7755":"n","7764":"P","7765":"p","7766":"P","7767":"p","7768":"R","7769":"r","7770":"R","7771":"r","7774":"R","7775":"r","7776":"S","7777":"s","7778":"S","7779":"s","7786":"T","7787":"t","7788":"T","7789":"t","7790":"T","7791":"t","7792":"T","7793":"t","7794":"U","7795":"u","7796":"U","7797":"u","7798":"U","7799":"u","7804":"V","7805":"v","7806":"V","7807":"v","7808":"W","7809":"w","7810":"W","7811":"w","7812":"W","7813":"w","7814":"W","7815":"w","7816":"W","7817":"w","7818":"X","7819":"x","7820":"X","7821":"x","7822":"Y","7823":"y","7824":"Z","7825":"z","7826":"Z","7827":"z","7828":"Z","7829":"z","7835":"s","7840":"A","7841":"a","7842":"A","7843":"a","7864":"E","7865":"e","7866":"E","7867":"e","7868":"E","7869":"e","7880":"I","7881":"i","7882":"I","7883":"i","7884":"O","7885":"o","7886":"O","7887":"o","7908":"U","7909":"u","7910":"U","7911":"u","7922":"Y","7923":"y","7924":"Y","7925":"y","7926":"Y","7927":"y","7928":"Y","7929":"y","8305":"i","8341":"h","8342":"k","8343":"l","8344":"m","8345":"n","8346":"p","8347":"s","8348":"t","8450":"c","8458":"g","8459":"h","8460":"h","8461":"h","8464":"i","8465":"i","8466":"l","8467":"l","8468":"l","8469":"n","8472":"p","8473":"p","8474":"q","8475":"r","8476":"r","8477":"r","8484":"z","8488":"z","8492":"b","8493":"c","8495":"e","8496":"e","8497":"f","8498":"F","8499":"m","8500":"o","8506":"q","8513":"g","8514":"l","8515":"l","8516":"y","8517":"d","8518":"d","8519":"e","8520":"i","8521":"j","8526":"f","8579":"C","8580":"c","8765":"s","8766":"s","8959":"z","8999":"x","9746":"x","9776":"i","9866":"i","10005":"x","10006":"x","10007":"x","10008":"x","10625":"z","10626":"z","11362":"L","11364":"R","11365":"a","11366":"t","11373":"A","11374":"M","11375":"A","11390":"S","11391":"Z","19904":"i","42893":"H","42922":"H","42923":"E","42924":"G","42925":"L","42928":"K","42929":"T","62937":"x"}
@@ -802,6 +823,7 @@ var EXPRESSION_DOUBLE_SYLLABIC_ONE = new RegExp(
     'dnt|' +
     'uity|' +
     'dea|' +
+    'rrhea|' +
     'gean|' +
     'oa|' +
     'ua|' +
@@ -1091,22 +1113,41 @@ module.exports={
 },{}],8:[function(require,module,exports){
 'use strict';
 
-var Haiku = require('./../js/haiku.js').haikuModule;
-var RandomHaiku = require('./../js/random-haiku.js').randomHaikuModule;
+var _haiku = require('./../js/haiku.js');
+
+var _randomHaiku = require('./../js/random-haiku.js');
 
 $(document).ready(function () {
-  var newHaiku = new Haiku();
+  var randomHaiku = new _randomHaiku.RandomHaiku();
+  randomHaiku.generateHaiku();
+  $("#randLine1").text('' + randomHaiku.line1.charAt(0).toUpperCase() + randomHaiku.line1.slice(1));
+  $("#randLine2").text('' + randomHaiku.line2.charAt(0).toUpperCase() + randomHaiku.line2.slice(1));
+  $("#randLine3").text('' + randomHaiku.line3.charAt(0).toUpperCase() + randomHaiku.line3.slice(1));
+
   $("#haikuForm").submit(function (event) {
     event.preventDefault();
-    newHaiku.line1 = $("#line1").val();
-    newHaiku.line2 = $("#line2").val();
-    newHaiku.line3 = $("#line3").val();
+    var line1 = $("#line1").val();
+    var line2 = $("#line2").val();
+    var line3 = $("#line3").val();
+    var newHaiku = new _haiku.Haiku(line1, line2, line3);
 
     if (newHaiku.haikuChecker()) {
-      alert('This is a haiku!');
+      var myDiv = document.getElementById('myDiv');
+      var newContent = document.createElement('div');
+      newContent.className = "carousel-item";
+      newContent.innerHTML = '<h4>' + line1 + '</h4>' + '<h4>' + line2 + '</h4>' + '<h4>' + line3 + '</h4>';
+      myDiv.appendChild(newContent);
     } else {
       alert('That ain\'t a haiku!');
     }
+  });
+
+  $("#randButton").click(function (event) {
+    event.preventDefault();
+    randomHaiku.generateHaiku();
+    $("#randLine1").text('' + randomHaiku.line1.charAt(0).toUpperCase() + randomHaiku.line1.slice(1));
+    $("#randLine2").text('' + randomHaiku.line2.charAt(0).toUpperCase() + randomHaiku.line2.slice(1));
+    $("#randLine3").text('' + randomHaiku.line3.charAt(0).toUpperCase() + randomHaiku.line3.slice(1));
   });
 });
 

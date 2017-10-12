@@ -1,0 +1,23 @@
+.carousel-item {
+  text-align: center;
+}
+
+.card {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  border-style: none;
+  background-color: rgba(38, 186, 171, 0.7);
+}
+
+.jumbotron {
+  text-align: center;
+
+  background-color: rgba(22, 130, 119, .7);
+}
+
+body {
+    background-image: url(https://static1.squarespace.com/static/556a1885e4b0bdc6f0794659/t/577a8e0cebbd1a47dbec29ed/1467649577049/AdobeStock_27621934+%281%29.jpeg?format=2500w);
+    background-size: auto;
+}
