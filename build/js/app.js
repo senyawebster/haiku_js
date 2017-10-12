@@ -1132,6 +1132,7 @@ $(document).ready(function () {
     var newHaiku = new _haiku.Haiku(line1, line2, line3);
 
     if (newHaiku.haikuChecker()) {
+      alert('Your Haiku Was Saved!');
       var myDiv = document.getElementById('myDiv');
       var newContent = document.createElement('div');
       newContent.className = "carousel-item";
@@ -1148,6 +1149,19 @@ $(document).ready(function () {
     $("#randLine1").text('' + randomHaiku.line1.charAt(0).toUpperCase() + randomHaiku.line1.slice(1));
     $("#randLine2").text('' + randomHaiku.line2.charAt(0).toUpperCase() + randomHaiku.line2.slice(1));
     $("#randLine3").text('' + randomHaiku.line3.charAt(0).toUpperCase() + randomHaiku.line3.slice(1));
+
+    $("#saveButton").click(function (event) {
+      event.preventDefault();
+      alert('Your Haiku Was Saved!');
+      var line1 = '' + randomHaiku.line1.charAt(0).toUpperCase() + randomHaiku.line1.slice(1);
+      var line2 = '' + randomHaiku.line2.charAt(0).toUpperCase() + randomHaiku.line2.slice(1);
+      var line3 = '' + randomHaiku.line3.charAt(0).toUpperCase() + randomHaiku.line3.slice(1);
+      var myDiv = document.getElementById('myDiv');
+      var newContent = document.createElement('div');
+      newContent.className = "carousel-item";
+      newContent.innerHTML = '<h4>' + line1 + '</h4>' + '<h4>' + line2 + '</h4>' + '<h4>' + line3 + '</h4>';
+      myDiv.appendChild(newContent);
+    });
   });
 });
 
